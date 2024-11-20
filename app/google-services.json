@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "32238490585",
+    "project_id": "e-study-235ca",
+    "storage_bucket": "e-study-235ca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32238490585:android:66091226fe13eaf20abfc8",
+        "android_client_info": {
+          "package_name": "com.example.spotifyclone"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU2zQHqfUjfjvrpeEQTYLlgI-lobH6OE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
