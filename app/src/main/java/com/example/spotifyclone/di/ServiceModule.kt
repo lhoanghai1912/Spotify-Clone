@@ -8,6 +8,7 @@ import androidx.media3.common.util.Util
 import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.datasource.DefaultHttpDataSource
 import androidx.media3.exoplayer.ExoPlayer
+import com.example.spotifyclone.data.remote.MusicDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,16 +23,18 @@ object ServiceModule {
 
     @ServiceScoped
     @Provides
-    fun provideAudioAttributes() = AudioAttributes.Builder()
-        .setContentType(C.AUDIO_CONTENT_TYPE_MUSIC)
-        .setUsage(C.USAGE_MEDIA)
-        .build()
+    fun provideMusicDatabase() = MusicDatabase()
+
+    @ServiceScoped
+    @Provides
+    fun provideAudioAttributes() =
+        AudioAttributes.Builder().setContentType(C.AUDIO_CONTENT_TYPE_MUSIC).setUsage(C.USAGE_MEDIA)
+            .build()
 
     @ServiceScoped
     @Provides
     fun provideExoPlayer(
-        @ApplicationContext context: Context,
-        audioAttributes: AudioAttributes
+        @ApplicationContext context: Context, audioAttributes: AudioAttributes
     ) = ExoPlayer.Builder(context).build().apply {
         setAudioAttributes(audioAttributes, true)
         setHandleAudioBecomingNoisy(true)
@@ -41,7 +44,6 @@ object ServiceModule {
     @ServiceScoped
     @Provides
     fun provideDataSourceFactory(
-
         @ApplicationContext context: Context
     ): DefaultDataSource.Factory {
         return DefaultDataSource.Factory(
